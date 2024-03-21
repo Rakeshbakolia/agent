@@ -8,12 +8,11 @@ import java.lang.instrument.Instrumentation;
 
 public class Agent {
     public static void premain(String args, Instrumentation inst){
-        System.out.println("AGENT CALLING");
-//        new AgentBuilder.Default()
-//                .type(ElementMatchers.any())
-//                .transform((builder, type, classLoader, module, x) ->
-//                        builder.method(ElementMatchers.any())
-//                                .intercept(FixedValue.value("Application calling")))
-//                .installOn(inst);
+        new AgentBuilder.Default()
+                .type(ElementMatchers.any())
+                .transform((builder, type, classLoader, module, x) ->
+                        builder.method(ElementMatchers.any())
+                                .intercept(FixedValue.value("Application calling")))
+                .installOn(inst);
     }
 }
