@@ -10,6 +10,7 @@ import org.springframework.context.annotation.FilterType;
 public class AgentApplication {
 
 	public static void main(String[] args) {
+
 	}
 
 }
