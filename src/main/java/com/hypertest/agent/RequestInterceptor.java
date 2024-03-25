@@ -1,9 +1,7 @@
 package com.hypertest.agent;
-import net.bytebuddy.asm.Advice;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
-import net.bytebuddy.implementation.bytecode.assign.Assigner;
 import org.springframework.http.*;
 
 import java.lang.reflect.Field;
@@ -12,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class TimerAdvice {
+public class RequestInterceptor {
 
     @RuntimeType
     public static ResponseEntity<?> intercept(@Origin Method method, @AllArguments Object[] arguments) throws IllegalAccessException {
@@ -32,7 +30,6 @@ public class TimerAdvice {
                 }
             }
         }
-        System.out.println("return type:: " + method.getReturnType());
         ResponseEntity<?> response = null;
         try {
             Object body = getResponseData(postName, postContent);
